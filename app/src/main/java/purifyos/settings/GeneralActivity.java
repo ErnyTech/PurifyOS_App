@@ -1,14 +1,21 @@
 package purifyos.settings;
 
+import android.app.AlertDialog;
+import android.content.ComponentName;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import java.io.IOException;
 
 
 public class GeneralActivity extends AppCompatActivity {
 
+    private static CoordinatorLayout coordinatorLayout;
     Button selinuxenable, selinuxdisable, artenable, artdisable, youtubeenable, youtubedisable, perm, startup, log, band, stat, lab;
 
     @Override
@@ -31,76 +38,140 @@ public class GeneralActivity extends AppCompatActivity {
         selinuxenable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 1", Toast.LENGTH_LONG).show();//display the text of button1
+                try {
+                    Runtime.getRuntime().exec("su -c rm /magisk/selinux/disable");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         selinuxdisable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 2", Toast.LENGTH_LONG).show();//display the text of button2
+                try {
+                    Runtime.getRuntime().exec("su -c touch /magisk/selinux/disable");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
         artenable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 2", Toast.LENGTH_LONG).show();//display the text of button2
+                try {
+                    Runtime.getRuntime().exec("su -c rm /magisk/runtime-optimization/disable");
+                    Runtime.getRuntime().exec("su -c rm -rf /data/dalvik-cache");
+                    Runtime.getRuntime().exec("su -c rm -rf /cache/dalvik-cache");
+                    reboot();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
-        artenable.setOnClickListener(new View.OnClickListener() {
+        artdisable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 2", Toast.LENGTH_LONG).show();//display the text of button2
+                try {
+                    Runtime.getRuntime().exec("su -c touch /magisk/runtime-optimization/disable");
+                    Runtime.getRuntime().exec("su -c rm -rf /data/dalvik-cache");
+                    Runtime.getRuntime().exec("su -c rm -rf /cache/dalvik-cache");
+                    reboot();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
-        artenable.setOnClickListener(new View.OnClickListener() {
+        youtubeenable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 2", Toast.LENGTH_LONG).show();//display the text of button2
+                try {
+                    Runtime.getRuntime().exec("su -c rm /magisk/youtube/disable");
+                    reboot();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
-        artenable.setOnClickListener(new View.OnClickListener() {
+        youtubedisable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 2", Toast.LENGTH_LONG).show();//display the text of button2
+                try {
+                    Runtime.getRuntime().exec("su -c touch /magisk/youtube/disable");
+                    reboot();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
-        artenable.setOnClickListener(new View.OnClickListener() {
+        startup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 2", Toast.LENGTH_LONG).show();//display the text of button2
+                Intent intent = new Intent();
+                intent.setComponent(new ComponentName("com.oneplus.security", "com.oneplus.security.chainlaunch.view.ChainLaunchAppListActivity"));
+                startActivity(intent);
             }
         });
-        artenable.setOnClickListener(new View.OnClickListener() {
+        perm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 2", Toast.LENGTH_LONG).show();//display the text of button2
+                Intent perm = new Intent();
+                perm.setComponent(new ComponentName("com.oneplus.security", "com.oneplus.security.defaultapp.DefaultAppListActivity"));
+                startActivity(perm);
             }
         });
-        artenable.setOnClickListener(new View.OnClickListener() {
+        log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 2", Toast.LENGTH_LONG).show();//display the text of button2
+                Intent log = new Intent();
+                log.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$NotificationStationActivity"));
+                startActivity(log);
             }
         });
-        artenable.setOnClickListener(new View.OnClickListener() {
+        band.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 2", Toast.LENGTH_LONG).show();//display the text of button2
+                Intent band = new Intent();
+                band.setComponent(new ComponentName("com.android.settings", "com.android.settings.RadioInfo"));
+                startActivity(band);
             }
         });
-        artenable.setOnClickListener(new View.OnClickListener() {
+        stat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 2", Toast.LENGTH_LONG).show();//display the text of button2
+                Intent stat = new Intent();
+                stat.setComponent(new ComponentName("com.android.settings", "com.android.settings.UsageStatsActivity"));
+                startActivity(stat);
             }
         });
-        artenable.setOnClickListener(new View.OnClickListener() {
+        lab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Simple Button 2", Toast.LENGTH_LONG).show();//display the text of button2
+                Intent lab = new Intent();
+                lab.setComponent(new ComponentName("com.android.systemui", "com.android.systemui.DemoMode"));
+                startActivity(lab);
             }
         });
     }
+    private void reboot() {
 
+        AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
+        helpBuilder.setTitle("Applica le impostazioni");
+        helpBuilder.setMessage("Riavvia il sistema per applicare le impostazioni");
+        helpBuilder.setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+
+                    public void onClick(DialogInterface dialog, int which) {
+                        try {
+                            Runtime.getRuntime().exec("su -c reboot");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+        // Remember, create doesn't show the dialog
+        AlertDialog helpDialog = helpBuilder.create();
+        helpDialog.show();
+    }
 
 }
