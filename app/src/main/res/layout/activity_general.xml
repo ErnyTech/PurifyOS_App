@@ -34,22 +34,22 @@
        android:id="@+id/artenable"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:text="Abilita Optimizzazione ART VM (Predefinito)" />
+       android:text="Abilita Ottimizzazione ART VM (Predefinito)" />
    <Button
        android:id="@+id/artdisable"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:text="Disabilita Optimizzazione ART VM " />
+       android:text="Disabilita Ottimizzazione ART VM " />
    <Button
        android:id="@+id/youtubeenable"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:text="Abilita YouTube NoAds" />
+       android:text="Abilita YouTube NoAds e Background" />
    <Button
        android:id="@+id/youtubedisable"
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
-       android:text="Disabilita YouTube NoAds (Predefinito)" />
+       android:text="Disabilita YouTube NoAds e Background (Predefinito)" />
    <Button
        android:id="@+id/startup"
        android:layout_width="match_parent"

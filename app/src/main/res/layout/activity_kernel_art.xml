@@ -1,0 +1,60 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/kernel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gestici Kernel" />
+
+            <Button
+                android:id="@+id/artspeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imposta ART su Speed (Predefinito)" />
+            <Button
+                android:id="@+id/artbalance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imposta ART su Balance, occupa poca archiviazione " />
+            <Button
+                android:id="@+id/artcompile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imposta ART per compilare tutto (pericolo)" />
+            <Button
+                android:id="@+id/artint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imposta ART per non compilare  niente (pericolo)" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Per configurare ART con queste opzioni devi abilitare Ottimizzazione ART VM nelle opzioni generali"
+                android:layout_weight="0.07" />
+
+        </LinearLayout>
+    </ScrollView>
+</android.support.design.widget.CoordinatorLayout>

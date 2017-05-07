@@ -13,7 +13,7 @@ import android.widget.Button;
 import java.io.IOException;
 
 
-public class GeneralActivity extends AppCompatActivity {
+public class kernel_art extends AppCompatActivity {
 
     private static CoordinatorLayout coordinatorLayout;
     Button selinuxenable, selinuxdisable, artenable, artdisable, youtubeenable, youtubedisable, perm, startup, log, band, stat, lab;
@@ -39,14 +39,9 @@ public class GeneralActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    Process se = Runtime.getRuntime().exec("su -c rm /magisk/selinux/disable");
-                    Process se1 = Runtime.getRuntime().exec("su -c setenforce 0");
-                    se.waitFor();
-                    se1.waitFor();
+                    Runtime.getRuntime().exec("su -c rm /magisk/selinux/disable");
                 } catch (IOException e) {
                     e.printStackTrace();
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
                 }
             }
         });
@@ -64,14 +59,12 @@ public class GeneralActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    Process se = Runtime.getRuntime().exec("su -c rm /magisk/selinux/disable");
-                    Process se1 = Runtime.getRuntime().exec("su -c setenforce 0");
-                    se.waitFor();
-                    se1.waitFor();
+                    Runtime.getRuntime().exec("su -c rm /magisk/runtime-optimization/disable");
+                    Runtime.getRuntime().exec("su -c rm -rf /data/dalvik-cache");
+                    Runtime.getRuntime().exec("su -c rm -rf /cache/dalvik-cache");
+                    reboot();
                 } catch (IOException e) {
                     e.printStackTrace();
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
                 }
             }
         });
