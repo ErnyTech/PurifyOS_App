@@ -18,6 +18,9 @@ public class GeneralActivity extends AppCompatActivity {
     private static CoordinatorLayout coordinatorLayout;
     Button selinuxenable, selinuxdisable, artenable, artdisable, youtubeenable, youtubedisable, perm, startup, log, band, stat, lab;
 
+    public GeneralActivity() throws IOException {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,8 +43,8 @@ public class GeneralActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     Process se = Runtime.getRuntime().exec("su -c rm /magisk/selinux/disable");
-                    Process se1 = Runtime.getRuntime().exec("su -c setenforce 0");
                     se.waitFor();
+                    Process se1 = Runtime.getRuntime().exec("su -c setenforce 0");
                     se1.waitFor();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -54,20 +57,10 @@ public class GeneralActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    Runtime.getRuntime().exec("su -c touch /magisk/selinux/disable");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        artenable.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    Process se = Runtime.getRuntime().exec("su -c rm /magisk/selinux/disable");
-                    Process se1 = Runtime.getRuntime().exec("su -c setenforce 0");
-                    se.waitFor();
-                    se1.waitFor();
+                    Process sd = Runtime.getRuntime().exec("su -c touch /magisk/selinux/disable");
+                    sd.waitFor();
+                    Process sd1 = Runtime.getRuntime().exec("su -c setenforce 1");
+                    sd1.waitFor();
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (InterruptedException e1) {
@@ -75,39 +68,68 @@ public class GeneralActivity extends AppCompatActivity {
                 }
             }
         });
+        artenable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Process ae = Runtime.getRuntime().exec("su -c rm /magisk/selinux/disable");
+                    ae.waitFor();
+                    Process ae1 = Runtime.getRuntime().exec("su -c rm -rf /data/dalvik-cache");
+                    ae1.waitFor();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                reboot();
+            }
+        });
         artdisable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    Runtime.getRuntime().exec("su -c touch /magisk/runtime-optimization/disable");
-                    Runtime.getRuntime().exec("su -c rm -rf /data/dalvik-cache");
-                    Runtime.getRuntime().exec("su -c rm -rf /cache/dalvik-cache");
-                    reboot();
+                    Process ad = Runtime.getRuntime().exec("su -c touch /magisk/selinux/disable");
+                    ad.waitFor();
+                    Process ad1 = Runtime.getRuntime().exec("su -c rm -rf /data/dalvik-cache");
+                    ad1.waitFor();
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
                 }
+                reboot();
             }
         });
         youtubeenable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    Runtime.getRuntime().exec("su -c rm /magisk/iYTBP_adblocked_arm64/disable");
-                    reboot();
+                    Process ye = Runtime.getRuntime().exec("su -c rm /magisk/youtube/disable");
+                    ye.waitFor();
+                    Process ye1 = Runtime.getRuntime().exec("su -c rm -rf /data/dalvik-cache");
+                    ye1.waitFor();
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
                 }
+                reboot();
             }
         });
         youtubedisable.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
-                    Runtime.getRuntime().exec("su -c touch /magisk/iYTBP_adblocked_arm64/disable");
-                    reboot();
+                    Process yd = Runtime.getRuntime().exec("su -c touch /magisk/youtube/disable");
+                    yd.waitFor();
+                    Process yd1 = Runtime.getRuntime().exec("su -c rm -rf /data/dalvik-cache");
+                    yd1.waitFor();
                 } catch (IOException e) {
                     e.printStackTrace();
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
                 }
+                reboot();
             }
         });
         startup.setOnClickListener(new View.OnClickListener() {
@@ -163,8 +185,8 @@ public class GeneralActivity extends AppCompatActivity {
 
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(this);
         helpBuilder.setTitle("Applica le impostazioni");
-        helpBuilder.setMessage("Riavvia il sistema per applicare le impostazioni");
-        helpBuilder.setPositiveButton("Ok",
+        helpBuilder.setMessage("Riavvia il sistema per applicare le impostazioni, il primo avvio sarà più lento");
+        helpBuilder.setPositiveButton("Riavvia",
                 new DialogInterface.OnClickListener() {
 
                     public void onClick(DialogInterface dialog, int which) {
@@ -175,6 +197,10 @@ public class GeneralActivity extends AppCompatActivity {
                         }
                     }
                 });
+        helpBuilder.setNegativeButton("No riavviare adesso", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+            }
+        });
 
         // Remember, create doesn't show the dialog
         AlertDialog helpDialog = helpBuilder.create();

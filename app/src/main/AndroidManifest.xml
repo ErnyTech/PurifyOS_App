@@ -20,7 +20,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".GeneralActivity" />
-        <activity android:name=".kernel_art"></activity>
+        <activity android:name=".kernel_art" />
+        <activity android:name=".kernel3" />
+        <activity android:name=".kernel3t" />
+        <activity android:name=".Theme_Activity" />
+        <activity android:name=".eastereggs_activity"></activity>
     </application>
 
 </manifest>

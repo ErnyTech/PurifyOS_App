@@ -1,0 +1,56 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <Button
+                android:id="@+id/pextremet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imposta profilo Performance Extreme" />
+            <Button
+                android:id="@+id/performancet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imposta profilo Performance" />
+            <Button
+                android:id="@+id/balancedt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imposta profilo Bilanciato" />
+            <Button
+                android:id="@+id/batteryt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imposta profilo Risparmio batteria" />
+            <Button
+                android:id="@+id/bextremet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Imposta profilo Battery Extreme" />
+            <Button
+                android:id="@+id/disable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Disabilita profili " />
+
+        </LinearLayout>
+    </ScrollView>
+</android.support.design.widget.CoordinatorLayout>

@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" >
+
+
 
     <ScrollView
 
@@ -22,10 +24,63 @@
             android:weightSum="1">
 
             <Button
+            android:id="@+id/kerneltext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:textColor="#303F9F"
+            android:text="Gestione Kernel" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#303F9F" />
+
+            <Button
+                android:id="@+id/kernel3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gestici profili Kernel OP3" />
+
+            <Button
+                android:id="@+id/kernel3t"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gestici profili Kernel OP3T" />
+
+            <Button
                 android:id="@+id/kernel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gestici Kernel" />
+                android:text="Gestici Kernel Manualmente" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="3dp" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ATTENZIONE: Gestendo il Kernel manualmente potresti far perdere efficacia ai profili automatici!" />
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="3dp" />
+
+            <Button
+                android:id="@+id/arttext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00000000"
+                android:textColor="#303F9F"
+                android:text="Impostazioni compilatore ART" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="#303F9F" />
 
             <Button
                 android:id="@+id/artspeed"
@@ -48,13 +103,18 @@
                 android:layout_height="wrap_content"
                 android:text="Imposta ART per non compilare  niente (pericolo)" />
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="3dp" />
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Per configurare ART con queste opzioni devi abilitare Ottimizzazione ART VM nelle opzioni generali"
-                android:layout_weight="0.07" />
+                android:layout_weight="0.67"
+                android:text="Per configurare il compilatore ART deve essere abilitato l'opzione &quot;Ottimizzazione ART&quot; dalle impostazioni generali" />
+
 
         </LinearLayout>
-    </ScrollView>
-</android.support.design.widget.CoordinatorLayout>
+            </ScrollView>
+        </android.support.design.widget.CoordinatorLayout>
